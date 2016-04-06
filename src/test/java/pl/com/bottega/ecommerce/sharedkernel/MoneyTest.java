@@ -87,4 +87,31 @@ public class MoneyTest {
 		Money result = money.multiplyBy(multiplier);
 		assertThat(result.toString(), is("0,00 " + Money.DEFAULT_CURRENCY));
 	}
+
+	@Test
+	public void firstNumberIsGreater() {
+		Money firstMoney = new Money(100);
+		Money secondMoney = new Money(50);
+
+		boolean result = firstMoney.greaterThan(secondMoney);
+		assertThat(result, is(true));
+	}
+
+	@Test
+	public void firstNumberIsNotGreater() {
+		Money firstMoney = new Money(50);
+		Money secondMoney = new Money(100);
+
+		boolean result = firstMoney.greaterThan(secondMoney);
+		assertThat(result, is(false));
+	}
+
+	@Test
+	public void numbersAreEqual() {
+		Money firstMoney = new Money(100);
+		Money secondMoney = new Money(100);
+
+		boolean result = firstMoney.greaterThan(secondMoney);
+		assertThat(result, is(false));
+	}
 }
