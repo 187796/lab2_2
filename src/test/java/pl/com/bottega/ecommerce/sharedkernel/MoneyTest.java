@@ -61,4 +61,30 @@ public class MoneyTest {
 		assertThat(result.toString(), is("100,00 " + Money.DEFAULT_CURRENCY));
 	}
 
+	@Test
+	public void testMultiplyByWithPositiveNumber() {
+		Money money = new Money(100);
+		double multiplier = 5;
+
+		Money result = money.multiplyBy(multiplier);
+		assertThat(result.toString(), is("500,00 " + Money.DEFAULT_CURRENCY));
+	}
+
+	@Test
+	public void testMultiplyByWithNegativeNumber() {
+		Money money = new Money(100);
+		double multiplier = -5;
+
+		Money result = money.multiplyBy(multiplier);
+		assertThat(result.toString(), is("-500,00 " + Money.DEFAULT_CURRENCY));
+	}
+
+	@Test
+	public void testMultiplyByWithZeroNumber() {
+		Money money = new Money(100);
+		double multiplier = 0;
+
+		Money result = money.multiplyBy(multiplier);
+		assertThat(result.toString(), is("0,00 " + Money.DEFAULT_CURRENCY));
+	}
 }
